@@ -16,6 +16,9 @@
             <c:if test="${message != null}">
                 <div align="center">
                     <h4>${message}</h4>
+                    <p>Username:${username}</p>
+                    <p>Password:${password}</p>
+                    
                 </div>
             </c:if>
             <h3>Please enter your credentials</h3>
