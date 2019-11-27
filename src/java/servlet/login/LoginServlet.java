@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author anastasios
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"}, 
+        initParams = {
+            @WebInitParam(name="username", value="Invalid"),
+            @WebInitParam(name="password", value="Too short")
+        })
 public class LoginServlet extends HttpServlet {
     
     @Override
@@ -41,8 +46,10 @@ public class LoginServlet extends HttpServlet {
         } else {
             String message = "Login failed!";
             request.setAttribute("message", message);
+            request.setAttribute("username", getInitParameter("username"));
+            request.setAttribute("password", getInitParameter("password"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
+            dispatcher.include(request, response);
         }
     }
     

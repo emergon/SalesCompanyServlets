@@ -13,7 +13,6 @@
         Welcome ${username}
         <br/>
         <br/>
-
         <a href="${pageContext.request.contextPath}/customers">
             Customers
         </a>

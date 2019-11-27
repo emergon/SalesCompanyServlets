@@ -18,4 +18,12 @@
             index.jsp
         </welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>country</param-name>
+        <param-value>Greece</param-value>
+    </context-param>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error404.jsp</location>
+    </error-page>
 </web-app>
